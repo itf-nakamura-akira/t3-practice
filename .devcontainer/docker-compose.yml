@@ -22,7 +22,12 @@ services:
       - t3-practice-db-volume:/var/lib/mariadb/
       - ../database/conf.d:/etc/mysql/conf.d
       - ../database/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-    env_file: .env
+    environment:
+      - MARIADB_DATABASE=t3_practice
+      - MARIADB_PORT=3306
+      - MARIADB_ROOT_PASSWORD=3WK4Pmq0EHMkjSDw7iYbnh6xR5OITop8QlU1zVBJNA9yuZXCFGgtfdsaer2Lcv
+      - MARIADB_USER=itf_user
+      - MARIADB_PASSWORD=xEHMLU2qztfjKArCkZXh60cvilbnR5OI1o3WY9PSDFGgp8Qsae7mT4NyudVBJw
     ports:
       - '32890:3306'
 

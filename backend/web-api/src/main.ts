@@ -1,11 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { AppConfigService } from './common/app-config/app-config.service';
 
 async function bootstrap() {
     // サーバーインスタンス生成
     const app = await NestFactory.create(AppModule);
 
     // 設定
+    const appConfigService: AppConfigService = app.get(AppConfigService);
+
     app.setGlobalPrefix('api');
     app.enableCors({
         origin: 'localhost:3000',
@@ -14,6 +17,6 @@ async function bootstrap() {
     });
 
     // 起動
-    await app.listen(3000);
+    await app.listen(appConfigService.serverPort);
 }
 bootstrap();

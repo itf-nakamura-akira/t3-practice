@@ -13,4 +13,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 RUN sudo npm install -g npm
+
+# NestJS
 RUN sudo npm i -g @nestjs/cli
