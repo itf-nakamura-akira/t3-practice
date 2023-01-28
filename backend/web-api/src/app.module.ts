@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { AppConfigService } from './common/services/app-config/app-config.service';
 import * as Joi from 'joi';
+import { RoutersModule } from './routers/routers.module';
 
 @Module({
     imports: [
@@ -24,8 +23,9 @@ import * as Joi from 'joi';
                 abortEarly: false,
             },
         }),
+        RoutersModule,
     ],
-    controllers: [AppController],
-    providers: [AppConfigService, AppService],
+    controllers: [],
+    providers: [AppConfigService],
 })
 export class AppModule {}
