@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { AppConfigService } from './common/app-config/app-config.service';
+import { AppConfigService } from './common/services/app-config/app-config.service';
 
 async function bootstrap() {
     // サーバーインスタンス生成
