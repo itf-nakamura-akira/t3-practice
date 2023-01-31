@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { AppConfigService } from './common/services/app-config/app-config.service';
 import * as Joi from 'joi';
 import { RoutersModule } from './routers/routers.module';
+import { APP_PIPE } from '@nestjs/core';
+import { ValidationPipe } from './common/pipes/validation/validation.pipe';
 
 @Module({
     imports: [
@@ -26,6 +28,12 @@ import { RoutersModule } from './routers/routers.module';
         RoutersModule,
     ],
     controllers: [],
-    providers: [AppConfigService],
+    providers: [
+        AppConfigService,
+        {
+            provide: APP_PIPE,
+            useClass: ValidationPipe,
+        },
+    ],
 })
 export class AppModule {}
